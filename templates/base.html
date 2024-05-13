@@ -359,7 +359,7 @@
     </div>
 </div>
 <br>
-<div class="container">
+<div class="container-lg">
     <div class="row">
         <div class="col-6">
             {{ fig_mendeley|safe }}
@@ -373,6 +373,7 @@
     {{ chart_div|safe }}
     
 </div>
+{% endblock %}
 
 
 
@@ -442,6 +443,7 @@
 <br>
 <br>
 <!-- Footer -->
+{% block footer %}
 <div class="container-fluid p-4 m-0" style="width: 100vw; background-image: url(&quot;https://repositorioufro.cl/files/asset/e98dc1ee419c885dbd0924c2ad8004fd7c65ee1d.png&quot;); background-size: cover; background-position: center center;">
     <div class="container p-3">
         <div class="row p-3 align-items-center">
@@ -479,7 +481,7 @@
         <p style="text-align: center; color: #ffffff">Las obras contenidas en esta plataforma están bajo una <a class="text-reset" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a></p>
     </div>   
 </div>
-{% endblock content %}
+{% endblock %}
 
 </body>
 </html>

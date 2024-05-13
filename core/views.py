@@ -3,8 +3,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 from django.db.models import Sum
-from .models import Altmetrics
+from .models import Altmetrics, RespuestasForm
 import plotly.express as px
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+import plot_likert
+import numpy as np
+from collections import Counter
+
 
 
 def show_totals(request):
@@ -123,7 +129,61 @@ def show_totals(request):
 def bibliometria(request):
     return render(request, 'bibliometria.html')
 
+        
+def respuestas_forms(request):
+    respuestas = RespuestasForm.objects.all()
+
+    # Diccionario para mapear los números a etiquetas deseadas
+    etiquetas_respuesta = {
+        1: 'Totalmente en desacuerdo',
+        2: 'En desacuerdo',
+        3: 'Neutro',
+        4: 'De acuerdo',
+        5: 'Totalmente de acuerdo'
+    }
+
+    conteo_respuestas = {columna: Counter() for columna in range(1, 16)}
+
+    for respuesta in respuestas:
+        for columna in range(1, 16):
+            conteo_respuestas[columna][getattr(respuesta, f'r{columna}')] += 1
+
+    figs = []  # Lista para almacenar los gráficos individuales
+
+    for columna, conteo in conteo_respuestas.items():
+        etiquetas_x = [etiquetas_respuesta[numero] for numero in conteo.keys()]
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=etiquetas_x,
+            y=list(conteo.values()),
+            name=f'Pregunta {columna}',
+            orientation='v',
+            marker_line=dict(width=1, color="#333"),
+            marker_color='#33cc99'
+        ))
+        fig.update_layout(
+            title=f"Pregunta {columna}",
+            xaxis_title="Respuesta",
+            yaxis_title="Cantidad",
+            barmode="group",
+            template='plotly_dark',
+            font_family='Roboto, sans-serif'
+        )
+        figs.append(fig.to_html(full_html=False))
+
+    context = {
+        'figs': figs  # Pasar los gráficos individuales al contexto
+    }
+
+    return render(request, 'respuestas_forms.html', context)
 
 
+# funcion para filtrar por la columna 'facultad' los valores totales por factultad del modelo RespuestasForm
 
-
+def respuestas_facultad(request):
+    r_medicina  = RespuestasForm.objects.filter(facultad='Medicina')
+    r_ingenieria = RespuestasForm.objects.filter(facultad='Ingeniería y Ciencias')
+    r_humanidades = RespuestasForm.objects.filter(facultad='Educación, Ciencias Sociales y Hdes.')
+    r_odonto = RespuestasForm.objects.filter(facultad='Odontología')
+    r_juridicas = RespuestasForm.objects.filter(facultad='Ciencias Jurídicas y Empresariales')
+    r_nucleo = RespuestasForm.objects.filter(facultad='Núcleo')
