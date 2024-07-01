@@ -2,15 +2,56 @@
 
 {% block content %}
 
-
+<div class="container-fluid" style="width: 70%; margin: 0 auto">
+    <div class="uk-card uk-card-default uk-card-body uk-animation-toggle uk-card-hover p-4" style="text-align: justify" tabindex="0">
+        <br>
+        <h1 class="display-4" style="text-align: center">Encuesta Ciencia Abierta UFRO</h1>
+        <br>
+        <p style="font-size: 18px">
+            El instrumento de evaluación de ciencia abierta fue diseñado con el objetivo de medir la adopción y
+            prácticas relacionadas con la ciencia abierta entre las y los académicos, investigadores y doctorandos
+            de la Universidad de la Frontera. La creación de este instrumento implicó un proceso de elaboración
+            centrado en la identificación de dimensiones clave y la redacción de afirmaciones claras y
+            pertinentes para su inclusión en éste.<br>
+        <br>
+            Para garantizar la eficacia y la precisión del instrumento, se optó por utilizar escalas Likert para la
+            evaluación de cada afirmación. Estas escalas ofrecen a los encuestados la oportunidad de expresar
+            su grado de acuerdo o desacuerdo con cada afirmación en una escala ordinal de cinco puntos, que
+            va desde "Totalmente en desacuerdo" hasta "Totalmente de acuerdo"<br>
+        <br>
+            La primera dimensión a evaluar es el "Software Libre y de Código Abierto", que se refiere al grado
+            de adopción y participación en proyectos de software abierto por parte de los académicos de la
+            UFRO. Esto incluye el uso de software de código abierto en proyectos de investigación, la
+            participación en comunidades de desarrollo y la creación de proyectos de software abierto por parte
+            de la universidad.<br>
+        <br>
+            La segunda dimensión, "Evaluación Abierta", aborda la transparencia y accesibilidad de los procesos
+            de revisión por pares, así como la participación en la evaluación abierta de otros trabajos. Esta
+            dimensión busca comprender en qué medida se promueve la apertura y la colaboración en el
+            proceso de evaluación de la investigación.<br>
+        <br>
+            La tercera dimensión, "Métricas Alternativas", se centra en el uso de métricas no tradicionales para
+            medir el impacto de la investigación, así como en su integración en informes institucionales y en la
+            influencia en decisiones de financiamiento y reconocimientos académicos.<br>
+        <br>
+            Asimismo, se incluyen las dimensiones de "Datos Abiertos" y "Recursos Educativos Abiertos", que
+            exploran la publicación de investigaciones en repositorios abiertos, la generación y compartición de
+            conjuntos de datos abiertos, así como el uso y la reutilización de estos datos en la labor académica,
+            así como la creación y utilización de recursos educativos abiertos para fomentar el acceso gratuito a
+            la educación.<br>
+        </p>
+    </div>
+</div> 
 <div class="container mt-4">
-    {{ image_path|safe}}
+    {{ image_path|safe }}
     <div class="row">
-        {% for fig in figs %}
+        {% for item in figs %}
         <div class="col-md-4">
-            <!-- Aquí va un gráfico -->
-            {{ fig|safe }}
-        <br>    
+            <p style="font-size: 14px;"><strong> Ítem {{ item.columna }}</strong></p>
+            <p style="font-size: 14px; text-align: justify;">{{ item.title }}</p>
+            <!-- Aquí va un gráfico de Plotly -->
+            <div>{{ item.fig|safe }}</div>
+            <br>    
         </div>
         {% comment %} <div style="height: 30px;"></div> {% endcomment %}
         {% endfor %}

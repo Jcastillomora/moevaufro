@@ -1,0 +1,52 @@
+{% block content %}
+
+<!-- NavBar Menu -->
+<nav class="uk-navbar-container" uk-navbar data-uk-sticky style="color: #fff; background-color: #212529">
+    <div class="uk-navbar-center">
+      <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" uk-toggle><span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span></a>
+      <ul class="uk-navbar-nav uk-visible@m">
+        <li>
+          <a href="{% url 'show_totals' %}" style="text-transform: none">Inicio</a>
+        </li>
+        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
+        <li>
+          <a href="{% url 'bibliometria' %}" style="text-transform: none">Redes Bibliométricas</a>
+        </li>
+        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
+        <li>
+          <a href="https://cienciaabierta.ufro.cl/" style="text-transform: none">Web Ciencia Abierta UFRO</a>
+        </li>
+        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
+        <li>
+          <a href="http://repositorio.ufro.cl/s/repositorio-ufro/page/welcome" style="text-transform: none">Repositorio UFRO</a>
+        </li> 
+        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
+        <li>
+          <a href="https://cienciaabierta.ufro.cl/nuestro-equipo/" style="text-transform: none">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Offcanvas Menu -->
+  <div id="offcanvas" uk-offcanvas>
+    <div class="uk-offcanvas-bar">
+      <ul class="uk-nav uk-nav-default">
+        <li>
+          <a href="{% url 'show_totals' %}">Inicio</a>
+        </li>
+        <li>
+          <a href="{% url 'bibliometria' %}">Redes Bibliométricas</a>
+        <li>
+          <a href="https://cienciaabierta.ufro.cl/">Web Ciencia Abierta UFRO</a>
+        </li>
+        <li>
+          <a href="http://repositorio.ufro.cl/s/repositorio-ufro/page/welcome">Repositorio UFRO</a>
+        </li>
+        <li>
+          <a href="https://cienciaabierta.ufro.cl/nuestro-equipo/">Contacto</a>
+        </li>
+    </div>
+  </div>
+
+{% endblock %}

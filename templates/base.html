@@ -1,9 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -16,10 +19,14 @@
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/css/uikit.min.css" />
 
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css"
+    >
+
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit-icons.min.js"></script>
-    <script src="uikit/dist/js/uikit-icons.min.js"></script>
 
     <!-- Roboto font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,27 +48,28 @@
             border-radius: 6px;
             background-color: aquamarine;
         }
+
     </style>
     {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
-    {% bootstrap_messages %} {% load static %}
+    {% bootstrap_messages %}
 </head>
 <body>
-{% block navbar %}
 
+{% block navbar %}
 <!--Huincha UFRO-VRIP-->
 <div class="container-fluid align-items-center" style="background-color: #005fab; height: 85px; width: 100%">
-    <div class="row p-2">
-      <div class="col px-2 d-flex align-items-center" style="color: white; font-size: 30px; font-weight: 100">
-          <a href="https://www.ufro.cl/" target="_blank" style="text-decoration: none;">
-              <img src="https://repositorioufro.cl/files/asset/4bb0d7977fd459601547426a87de36f061a4797f.png" class="p-1">
-          </a>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-          <a href="https://vrip.ufro.cl/" target="_blank" style="text-decoration: none;">
-              <img src="https://repositorioufro.cl/files/asset/7aa7a9987e0c4756b844636f0aa84d9a2023c5ef.png" class="p-1">
-          </a>
-      </div>
+  <div class="row p-2">
+    <div class="col px-2 d-flex align-items-center" style="color: white; font-size: 30px; font-weight: 100">
+        <a href="https://www.ufro.cl/" target="_blank" style="text-decoration: none;">
+            <img src="https://repositorioufro.cl/files/asset/4bb0d7977fd459601547426a87de36f061a4797f.png" class="p-1">
+        </a>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="https://vrip.ufro.cl/" target="_blank" style="text-decoration: none;">
+            <img src="https://repositorioufro.cl/files/asset/7aa7a9987e0c4756b844636f0aa84d9a2023c5ef.png" class="p-1">
+        </a>
     </div>
   </div>
+</div>
 
   <!--/Banner-->
 <div class="container-fluid p-4 m-0" style="width: 100vw; background-image: url('https://repositorioufro.cl/files/asset/e98dc1ee419c885dbd0924c2ad8004fd7c65ee1d.png'); background-size: cover; background-position: center center;">
@@ -80,58 +88,8 @@
         </div>
    </div>
 </div>
-
-<!-- NavBar Menu -->
-<nav class="uk-navbar-container" uk-navbar data-uk-sticky style="color: #fff; background-color: #212529">
-    <div class="uk-navbar-center">
-      <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" uk-toggle><span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span></a>
-      <ul class="uk-navbar-nav uk-visible@m">
-        <li>
-          <a href="{% url 'show_totals' %}" style="text-transform: none">Inicio</a>
-        </li>
-        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
-        <li>
-          <a href="{% url 'bibliometria' %}" style="text-transform: none">Redes Bibliométricas</a>
-        </li>
-        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
-        <li>
-          <a href="https://cienciaabierta.ufro.cl/" style="text-transform: none">Web Ciencia Abierta UFRO</a>
-        </li>
-        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
-        <li>
-          <a href="http://repositorio.ufro.cl/s/repositorio-ufro/page/welcome" style="text-transform: none">Repositorio UFRO</a>
-        </li> 
-        <li class="uk-navbar-divider" style="border-right: 2px solid #dfdfdf;margin-top: 20px;margin-bottom: 20px;"></li>
-        <li>
-          <a href="https://cienciaabierta.ufro.cl/nuestro-equipo/" style="text-transform: none">Contacto</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Offcanvas Menu -->
-  <div id="offcanvas" uk-offcanvas>
-    <div class="uk-offcanvas-bar">
-      <ul class="uk-nav uk-nav-default">
-        <li>
-          <a href="{% url 'show_totals' %}">Inicio</a>
-        </li>
-        <li>
-          <a href="{% url 'bibliometria' %}">Redes Bibliométricas</a>
-        <li>
-          <a href="https://cienciaabierta.ufro.cl/">Web Ciencia Abierta UFRO</a>
-        </li>
-        <li>
-          <a href="http://repositorio.ufro.cl/s/repositorio-ufro/page/welcome">Repositorio UFRO</a>
-        </li>
-        <li>
-          <a href="https://cienciaabierta.ufro.cl/nuestro-equipo/">Contacto</a>
-        </li>
-    </div>
-  </div>
-
 {% endblock navbar %}
-
+{% include 'navbar.html' %}
 {% block content %}
 <!--Conteindo de Altmetrics y gráficos-->
 <div class="container-fluid" style="width: 70%; margin: 0 auto">
@@ -140,7 +98,7 @@
         <h1 class="display-4" style="text-align: center">Almetrics Institucional</h1>
         <br>
         <p style="font-size: 18px">
-        Las métricas alternativas (altmetrics) son un conjunto de métricas usadas para medir los diferentes impactos de la investigación 
+        Las métricas alternativas (<a class="uk-link-reset" href="https://www.altmetric.com/">Altmetrics</a>) son un conjunto de métricas usadas para medir los diferentes impactos de la investigación 
         más allá de las métricas tradicionales de la producción científica. Corresponden a indicadores derivados en muchos casos de 
         herramientas de las redes sociales, que se generan a partir de las interacciones de los usuarios en los espacios web con los 
         materiales generados por los investigadores.<br>
@@ -373,9 +331,6 @@
     {{ chart_div|safe }}
     
 </div>
-{% endblock %}
-
-
 
 {% comment %} 
 <div class="container-fluid">
@@ -439,49 +394,152 @@
     </div>
 </div>
 </div> {% endcomment %}
-
 <br>
 <br>
-<!-- Footer -->
-{% block footer %}
-<div class="container-fluid p-4 m-0" style="width: 100vw; background-image: url(&quot;https://repositorioufro.cl/files/asset/e98dc1ee419c885dbd0924c2ad8004fd7c65ee1d.png&quot;); background-size: cover; background-position: center center;">
-    <div class="container p-3">
-        <div class="row p-3 align-items-center">
-            <div class="col-md">
-                <div class="row align-items-center">
-                    <div class="col-sm-3" class="p-1">
-                        <img src="https://repositorio.ufro.cl/files/asset/fa411647c4557e343909196a06ae340ec2e51bca.png" width="90" height="140">    
-                    </div>
-                    <div class="col">
-                        <p style="color: #ffffff" >CONTACTO</p>
-                        <p style="color: #ffffff" ><a href="https://cienciaabierta.ufro.cl/" style="text-decoration: none; color: #ffffff"><img src="https://repositorioufro.cl/files/asset/a831caaff4708a71161e53900fbf615e8560a1e0.png" width="25" height="25">&nbsp;cienciaabierta.ufro.cl</a></p>
-                        <p style="color: #ffffff" ><a href="mailto: " style="text-decoration: none; color: #ffffff"><img src="https://repositorioufro.cl/files/asset/dd93aa78b541ab537b55126759b9b553d1e60154.png" width="25" height="25">&nbsp;ciencia.abierta@ufrontera.cl</a></p> 
-                    </div>
+<br>
+<div class="container">
+    <div class="content">
+        <h1 class="has-text-dark">Autores</h1>
+        {% comment %} <p>
+        Lorem ipsum<sup><a>[1]</a></sup> dolor sit amet, consectetur adipiscing
+        elit. Nulla accumsan, metus ultrices eleifend gravida, nulla nunc varius
+        lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat
+        odio, sollicitudin vel erat vel, interdum mattis neque. Sub<sub>script</sub>
+        works as well!
+        </p>
+        <h2 class="has-text-dark">Proyecto Ciencia Abierta</h2>
+        <p>
+        Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit.
+        Quisque condimentum maximus mi, sit amet commodo arcu rutrum id. Proin
+        pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem
+        rhoncus lacus dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.
+        </p>
+        <ul>
+        <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
+        <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
+        <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
+        <li>Ut non enim metus.</li>
+        </ul> {% endcomment %}
+    </div>
+</div>
+<br>
+<div class="container-lg uk-grid-collapse uk-child-width-expand@s uk-text-center" uk-grid>
+    <div>
+        <div class="uk-background-default uk-padding text-center">
+            <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img
+                      src="https://cienciaabierta.ufro.cl/wp-content/uploads/2023/06/Alexis-Rebolledo.png"
+                      alt="Placeholder image"
+                    />
+                  </figure>
                 </div>
-            </div>
-            <div class="col-md">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <a href="https://www.ufro.cl/" target="_blank" style="text-decoration: none;" class="p-1">
-                            <img src="https://repositorio.ufro.cl/files/asset/4bb0d7977fd459601547426a87de36f061a4797f.png" class="p-1" target="_blank" width="150" height="65">
-                        </a>
-                        <a href="https://vrip.ufro.cl/" target="_blank" style="text-decoration: none;" class="p-1">
-                            <img src="https://repositorio.ufro.cl/files/asset/7aa7a9987e0c4756b844636f0aa84d9a2023c5ef.png" class="p-1" href="https://vrip.ufro.cl/" target="_blank" width="150" height="65">
-                        </a>
-                        <a href="https://acceso-abierto.anid.cl/" target="_blank" style="text-decoration: none;" class="p-1">
-                            <img src="https://repositorio.ufro.cl/files/asset/27f1b523c62525d03151d06ee21380b63891de38.png" class="p-1" href="https://acceso-abierto.anid.cl/" target="_blank" width="150" height="65">
-                        </a>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <a href="https://orcid.org/0000-0003-2728-5723"><img
+                          src="https://orcid.org/assets/vectors/orcid.logo.icon.svg"
+                          alt="Placeholder image"
+                        /></a>
+                      </figure>
                     </div>
+                    <div class="media-content">
+                      <p class="title is-4 has-text-dark">Alexis Rebolledo</p>
+                      <p class="subtitle is-6">Metodólogo</p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                    Responsable diseño metodológico, operacional y analítico del modelo evaluativo de prácticas de ciencia abierta
+                    <br />
+                    {% comment %} <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time> {% endcomment %}
+                  </div>
                 </div>
             </div>
         </div>
-    <div class="container">
-    <hr class="uk-divider-small px-5" style="color: white">
-        <p style="text-align: center; color: #ffffff;"><a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer" class="text-reset" style="text-decoration: none">Powered by Django Framework</a></p>
-        <p style="text-align: center; color: #ffffff">Las obras contenidas en esta plataforma están bajo una <a class="text-reset" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a></p>
-    </div>   
+    </div>
+    <div>
+        
+        <div class="uk-background-default uk-padding">
+            <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img
+                      src="https://cienciaabierta.ufro.cl/wp-content/uploads/2023/06/Fabian-Gallardo.png"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <a href="https://orcid.org/0000-0002-1669-2473"><img
+                          src="https://orcid.org/assets/vectors/orcid.logo.icon.svg"
+                          alt="Placeholder image"
+                        /></a>
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-4 has-text-dark">Fabián Gallardo</p>
+                      <p class="subtitle is-6">Gestor Bibliotecólogo</p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                    Encargado de recuperar y apoyar en procesos de curatoría de información para el análisis e implentación del diseño metodológico
+                    <br />
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="uk-background-default uk-padding">
+            <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img
+                      src="https://cienciaabierta.ufro.cl/wp-content/uploads/2023/06/Jorge-Castillo.png"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-48x48">
+                        <a href="https://orcid.org/0009-0003-3435-4130">
+                        <img
+                          src="https://orcid.org/assets/vectors/orcid.logo.icon.svg"
+                          alt="Placeholder image"
+                        /></a>
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      <p class="title is-4 has-text-dark">Jorge Castillo</p>
+                      <p class="subtitle is-6">Gestor Infraestructura Digital</p>
+                    </div>
+                  </div>
+              
+                  <div class="content">
+                    Desarrollador full-stack, responsable de ETL desde la API Almetrics y la visualización de datos, administrador de la plataforma
+                    <br />
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<br>
+<br>
+{% include 'footer_ca.html' %}
+{% comment %} {% include 'footer_inst.html' %} {% endcomment %}
 {% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
 
 </body>
 </html>
